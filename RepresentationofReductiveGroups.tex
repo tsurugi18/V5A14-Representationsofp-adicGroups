@@ -1,0 +1,358 @@
+\documentclass[10pt]{article}
+\linespread{0.5} 
+\usepackage{extsizes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{stix}
+\usepackage{tikz-cd} 
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+\newcommand{\hookdoubleheadrightarrow}{%
+  \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
+}
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{%
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{definition}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{claim}{Claim}[proposition]
+\newtheorem{example}{Example}[section] 
+\newtheorem{exercise}{Exercise}[section] 
+\numberwithin{equation}{theorem}
+
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Cob}{Cob}
+\DeclareMathOperator{\rev}{rev}
+\DeclareMathOperator{\TQFT}{TQFT}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\alggrp}{alg-grp}
+\DeclareMathOperator{\Simple}{Simple}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Image}{im}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id} 
+\DeclareMathOperator{\op}{op} 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Adj}{Adj}
+\DeclareMathOperator{\ConcAffVar}{ConcAffVar}
+\DeclareMathOperator{\AbsAffVar}{AbsAffVar}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Comod}{Comod}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\indec}{indec}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\SVect}{SVect}
+\DeclareMathOperator{\FSet}{FSet}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Ver}{Ver}
+\DeclareMathOperator{\ComAlg}{ComAlg}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\PGL}{PGL}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\bN}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\bR}[0]{\mathbb{R}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\cO}[0]{\mathcal{O}}
+\newcommand{\bC}[0]{\mathbb{C}}
+\newcommand{\bG}[0]{\mathbb{G}}
+\newcommand{\bQ}[0]{\mathbb{Q}}
+\newcommand{\bF}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\A}[0]{\mathbb{A}}
+\newcommand{\bP}[0]{\mathbb{P}}
+\newcommand{\K}[0]{\mathbb{K}}
+\newcommand{\cat}[0]{\mathscr{C}}
+\newcommand{\catd}[0]{\mathscr{D}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\Lie}[0]{\mathcal{L}}
+\newcommand{\bT}[0]{\mathbb{T}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\fp}[0]{\mathfrak{p}}
+\newcommand{\tl}[0]{\mathfrak{t}}
+\newcommand{\gl}[0]{\mathfrak{gl}}
+\newcommand{\spl}[0]{\mathfrak{sl}}
+\newcommand{\so}[0]{\mathfrak{so}}
+\newcommand{\spg}[0]{\mathfrak{sp}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\card}[1]{\vert #1\vert}
+\newcommand{\smat}[1][n]{\Mat_{#1\times #1}}
+\newcommand{\I}[1][n]{\mathcal{I}}
+\newcommand{\disum}[1][n]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\summand}[0]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{Algebraic Groups}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn}
+
+
+\begin{document}
+\maketitle
+\section{Preliminaries}
+Let $F$ be a non-Archimedian local field (i.e. $F/\bQ_p$ for some finite extension of a $p$-adic numbers or $F=\bF_q((t))$ where $q$ is a power of $p$).
+We denote $\mathcal{O}\subseteq F$ for the ring of integers. 
+\begin{example}
+    $F=\bQ_p,\mathcal{O}_F = \Z_p$,  or $\bF_q\llbracket t\rrbracket \subseteq\bF_q((t))$.
+\end{example}
+We will denote $\varpi$ for the uniformizer (i.e. a generator of the unique maximal ideal $\mathfrak{p}\subseteq\mathcal{O}$). In one of our cases, we have $\mathbb{F}_q = \mathcal{O}/\varpi\mathcal{O}$. 
+\par The topology on $\GL_n(F)$ is defined by the neighborhood basis around the origin. Explicitly, this is constructed by 
+\begin{equation*}
+    I_n + \varpi\Mat_{n\times n}(\mathcal{O})\supseteq I_n + \varpi^@\Mat_{n\times n}(\mathcal{O})\supseteq\cdots
+\end{equation*}
+\begin{definition}
+Let $G=\GL_n(F)$ be a group. A smooth representation of $G$ is a pair $(\pi,V)$ such that 
+\begin{enumerate}[1.]
+\item $V$ is a complex vector space.
+\item $\pi:G\to \Aut_\C(V)$ is a group homomorphism.
+\item $\forall v\in V$, $\Stab_G(v)\defeq\{g\in G\:|\: \pi(g)(v) =v \}$ is open.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+    For $\GL_1(\bQ_p) = \bQ^\times_p$, $V=\C$ the we can take,
+    \begin{equation*}
+        \pi(g) = \ab{g}_p = p^{-\mathrm{val}(g)}\in\Aut(\C)\cong \C^\times.
+    \end{equation*}
+\end{example}
+
+\begin{definition}
+    A representation $(\pi,V)$ is irreducible if $(\pi,V)$ has precisely two subrepresentations (i.e. the trivial representations).
+\end{definition}
+
+\begin{remark}
+    By the definition above, $\{0\}$ is not an irreducible representation.
+\end{remark}
+
+\begin{remark}
+    All irreducible smooth representations of $\bQ^\times_p$ are one dimensional.
+\end{remark}
+
+\subsection{Linear Algebraic Groups}
+\begin{definition}
+    Let $k$ be an algebraically closed field. 
+    A linear algebraic group over $k$ is a reduced Zariski-closed subgroup of $\GL_n$ over $k$ for some $n\in\bN$.
+    \par Equivalently, linear algebraic groups over $k$ are smooth affine group schemes of finite type over $k$.
+\end{definition}
+
+\begin{notation}
+From now on, $\bG$ will denote the linear algebraic groups and $G= \bG(k)$ the $k$-points of $\bG$.
+\end{notation}
+
+\begin{example}
+    $\GL_n(k),\SL_n(k),\mathrm{O}_n(k),\Sp_{2n}(k)$ are linear algebraic groups and, $B(k)\subseteq\GL_n(k)$, upper triangular matrices
+\end{example}
+
+\begin{definition}
+    $G\subseteq\GL_n(k)$ is unipotent if $G$ is conjugate to a subgroup of upper triangular matrices with $1$-s in the diagonal.
+\end{definition}
+
+\begin{definition}
+    The unipotent radical (denoted by $(RG)_u$ or $R_uG$) of a linear algebraic group is the maximal connected unipotent normal subgroup of $G$.
+\end{definition}
+
+\begin{definition}
+    An algebraic group $G$ is reductive if its unipotent radical is trivial.
+\end{definition}
+
+\begin{example}
+    $\GL_n(k),\SL_n(k),\SO_n(k),\Sp_{2n}(k)$ are all reductive. $U_n(k)$ and $B(k)$ are not.
+\end{example}
+
+\begin{definition}
+    A linear algebraic group $G$ is a torus if $G\cong (k^\times)^n$ for some $n\in\bN$.
+\end{definition}
+
+\begin{theorem}
+    All maximal tori in an linear algebraic group $G$ are conjugate.
+\end{theorem}
+
+\begin{notation}
+    $T$ will be a maximal torus in $G$. Then we will denote $\g = \mathrm{Lie}(G) \defeq T_1(G)$ with Lie algebra structure.
+\end{notation}
+
+\begin{example}
+    \begin{center}
+\begin{tabular}{l|l|l}
+Linear Algebraic Groups & Lie Algebra                                                                                                                                                                                                                                                                         & Commutator      \\ \hline
+$\mathrm{GL}_n$         & $\Mat_{n\times n}$                                                                                                                                                                                                                                                                  & $[A,B] = AB-BA$ \\ \hline
+$\SL_n$                 & $\{A\in \Mat_{n\times n}\sep\tr(A) = 0\}$                                                                                                                                                                                                & $[A,B] = AB-BA$ \\ \hline
+$\Sp_{2n}$              & $\left\{A\in\Mat_{n\times n}\:\bigg{\vert}\: \tr(A) = 0,JA+\prescript{t}{}{A}J = 0\right\}$ & $[A,B] = AB-BA$
+\end{tabular}
+    \end{center}
+\end{example}
+
+\begin{remark}
+    $G$ acts on $\g$ via the adjoint action. That is the derivation of the conjugation action on itself. Explicitly, for $g\in\GL_n(k)$ and $A\in\Mat_{n\times n}(k)$, we define,
+    \begin{equation*}
+        \Ad(g)(A) = gAg^{-1}.
+    \end{equation*}
+    Hence $T$ also acts on $\g$ and such induced actions are diagonalizable.
+\end{remark}
+
+\begin{example}
+    \begin{equation*}
+        \mathrm{diag}(t_1,\cdots,t_n)E_{ij} = t_it_j^{-1}E_{ij}.
+    \end{equation*}
+\end{example}
+
+\begin{definition}
+    $X^*(T)=\Hom_k(T,\bG_m)$ the characters of $T$.
+\end{definition}
+
+\begin{example}
+    $X^*(\bG_m(k)) = \Z$ explicitly, this sends $k^\times \ni x\mapsto x^n\in k^\times$ for some $n$.
+\end{example}
+
+From now on, $G$ will denote the connected reductive group. 
+
+\begin{proposition}
+    For $\g=\mathrm{Lie}(G)$. We have,
+    \begin{equation*}
+        \g = \bigoplus_{\alpha\in X^*(T)}\g_\alpha,
+    \end{equation*}
+    where $\g_\alpha$ is the subspace such that $T$ acts via the character $\alpha$. Explicitly, this is 
+    \begin{equation*}
+        \g_\alpha \defeq\{X\in\g\sep \forall t\in T, \Ad(t)(X) = \alpha(t)X\}.
+    \end{equation*}
+    The root of $G$ is 
+    \begin{equation*}
+    \Phi(G) = \Phi(G;T) \defeq\{\alpha\in X^*(T)\backslash\{0\}\sep \dim\g_\alpha\not=0\}.
+    \end{equation*}
+\end{proposition}
+
+\begin{remark}
+    $\dim\g_\alpha = 1$ for all $\alpha\in\Phi(G)$ and $\Phi(G)\subseteq X^*(T)\tens{\Z}\bR\cong \bR^n$ which is a root system. Such root systems are classified via Dynkin diagrams.
+    \par The root system $\Phi(G)=\Phi(G;T)$ is independent of $T$ up to isomorphisms.
+    \par $G/Z(G)$ is uniquely determined by $\Phi(G)$.
+\end{remark}
+
+\begin{example}
+    For $G=\GL_n(k)$ and $\g = \mathfrak{gl}_n$, we have,
+    \begin{equation*}
+        \Mat_{n\times n}(k) = \bigoplus_{\alpha\in X^*(T)}\g_\alpha.
+    \end{equation*}
+    This is 
+    \begin{equation*}
+        T\oplus\bigoplus_{i\not=j}\langle E_{ij}\rangle.
+    \end{equation*}
+    Hence,
+    \begin{equation*}
+        \Phi(\GL_n) = \{\mathrm{diag}(t_1,\cdots,t_n)\mapsto t_it_j^{-1}\sep 1\leq i\not= j\leq n\}.
+    \end{equation*}
+    We have 
+    \begin{equation*}
+        X^*(T) = \Z t_1\oplus \Z t_2.
+    \end{equation*}
+
+    The root system is 
+    \begin{center}
+        \begin{tikzpicture}
+        \filldraw[black] (0,0) circle (2pt);
+        \node[draw] at (0, 0)   (a) {O};
+    \end{tikzpicture}
+    \end{center}
+    %finish this 
+    Also do for $\GL_3$
+\end{example}
+
+\begin{remark}
+    A reductive group is called semisimple if its center is finite. Root system does not determine the groups however, they do determine groups modulo their center.
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{Borel} Borel, Linear algebraic groups
+\bibitem{Humphreys} Humphreys, Linear algebraic groups
+\bibitem{Springer} Springer, Linear algebraic groups
+\bibitem{Conrad} Conrad, Linear algebraic groups.
+\bibitem{Vigneras} Vignéras, Marie-France Représentations $l$-modulaires d'un groupe réductif p-adique avec $l\not=p$
+\bibitem{Roche}Roche, Alan, The Bernstein Decomposition and the Bernstein Centre.
+\bibitem{Debacker} Debacker, Stefan, Lecture notes https://websites.umich.edu/~smdbackr/MATH/notes.pdf.
+\bibitem{Renard} Renard, David (2010), Representations des groupes reductifs p-adiques Séminaire Bourbaki page 193-219, Société Mathématique de France.
+\bibitem{Buschnell} Buschnell, Colin, Kutzko, Phillip (1998),  Smooth representations of reductive p-adic groups: structure theory via types, Proceedings of the London Mathematical Society.
+\bibitem{May-Prasad} Moy, A., Prasad, G. Jacquet functors and unrefined minimal K-types. Commentarii Mathematici Helvetici 71, 98–121 (1996).
+\bibitem{Fintzen} Fintzen, Jessica. (2020), Types for tame p-adic groups. Annals of Mathematics.
+\bibitem{Ohara} Ohara, Kazuma. A comparison of endomorphism algebras.
+\bibitem{Blondel} Blondel, Corinne. Quelques propríetés des paires couvrantes.
+\bibitem{Dat} Dat, Jean-Francois. Finitude pour les representations lisses de groupes p-adiques.
+\bibitem{Soll} Solleveld, Maarten. Affine Hecke algebras and their representations.
+\bibitem{Adl_!} Jeffrey D. Adler, Jessica Fintzen, Manish Mishra, Kazuma Ohara. Structure of Hecke algebras arising from types.
+\bibitem{Adl_1} Jeffrey D. Adler, Jessica Fintzen, Manish Mishra, Kazuma Ohara. Reduction to depth zero for tame p-adic groups via Hecke algebra isomorphisms.
+\end{thebibliography}
+
+\end{document}
