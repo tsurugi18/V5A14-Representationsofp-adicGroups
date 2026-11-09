@@ -1,5 +1,5 @@
 \documentclass[10pt]{article}
-\linespread{0.5} 
+\linespread{1} 
 \usepackage{extsizes}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -48,7 +48,6 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \DeclareMathOperator{\chr}{char}
 \DeclareMathOperator{\alggrp}{alg-grp}
 \DeclareMathOperator{\Simple}{Simple}
-\DeclareMathOperator{\ab}{ab}
 \DeclareMathOperator{\len}{len}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\triv}{triv}
@@ -135,15 +134,20 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newcommand{\cat}[0]{\mathscr{C}}
 \newcommand{\catd}[0]{\mathscr{D}}
 \newcommand{\M}[0]{\mathbb{M}}
-\newcommand{\Lie}[0]{\mathcal{L}}
+\newcommand{\Lie}[0]{\mathrm{Lie}}
+\newcommand{\BT}[0]{\mathrm{BT}}
+\newcommand{\val}[0]{\mathrm{val}}
 \newcommand{\bT}[0]{\mathbb{T}}
+\newcommand{\bU}[0]{\mathbb{U}}
 \newcommand{\g}[0]{\mathfrak{g}}
 \newcommand{\fp}[0]{\mathfrak{p}}
 \newcommand{\tl}[0]{\mathfrak{t}}
 \newcommand{\gl}[0]{\mathfrak{gl}}
 \newcommand{\spl}[0]{\mathfrak{sl}}
 \newcommand{\so}[0]{\mathfrak{so}}
+\newcommand{\ab}[1]{\vert #1\vert}
 \newcommand{\spg}[0]{\mathfrak{sp}}
+\newcommand{\diag}[0]{\mathrm{diag}}
 \newcommand{\sep}[0]{\:|\:}
 \newcommand{\card}[1]{\vert #1\vert}
 \newcommand{\smat}[1][n]{\Mat_{#1\times #1}}
@@ -157,26 +161,37 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
   \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
 }
 
-\title{Algebraic Groups}
-\author{So Murata}
-\date{WiSe 25/26, University of Bonn}
+\title{V5A14 Representation of $p$-adic Groups}
+\author{Lectures Given By \\ Professor. Jessica Fintzen\\ Typed by So Murata}
+\date{WiSe 26/27, University of Bonn}
 
 
 \begin{document}
 \maketitle
 \section{Preliminaries}
-Let $F$ be a non-Archimedian local field (i.e. $F/\bQ_p$ for some finite extension of a $p$-adic numbers or $F=\bF_q((t))$ where $q$ is a power of $p$).
-We denote $\mathcal{O}\subseteq F$ for the ring of integers. 
+Let $F$ be a non-Archimedian local field (i.e., $F/\bQ_p$ for some finite extension of a $p$-adic numbers or $F=\bF_q((t))$ where $q$ is a power of $p$).
+We denote $\mathcal{O}_F\subseteq F$ for the ring of integers. 
 \begin{example}
-    $F=\bQ_p,\mathcal{O}_F = \Z_p$,  or $\bF_q\llbracket t\rrbracket \subseteq\bF_q((t))$.
+    \label{example_1_1}
+    Examples of pairs $(F,\cO_F)$ as above are $(\bQ_p,\Z_p)$ and $(\bF_q((t)),\bF_q\llbracket t\rrbracket)$.
 \end{example}
-We will denote $\varpi$ for the uniformizer (i.e. a generator of the unique maximal ideal $\mathfrak{p}\subseteq\mathcal{O}$). In one of our cases, we have $\mathbb{F}_q = \mathcal{O}/\varpi\mathcal{O}$. 
+We will denote $\varpi$ for the uniformizer (i.e., a generator of the unique maximal ideal $\mathfrak{p}\subseteq\mathcal{O}$). 
+\begin{example}
+    In the first pair of Example \ref{example_1_1}, we have $\varpi = p$, hence
+    \begin{equation*}
+        \cO_F/\varpi\cO_F = \Z_p/(p)\Z_p \cong \bF_p.
+    \end{equation*}
+    In the second pair, $\varpi=t$, hence 
+    \begin{equation*}
+        \cO_F/\varpi\cO_F = \bF_q\llbracket t\rrbracket/(t)\bF_q\llbracket t\rrbracket \cong \bF_q.
+    \end{equation*}
+\end{example}
 \par The topology on $\GL_n(F)$ is defined by the neighborhood basis around the origin. Explicitly, this is constructed by 
 \begin{equation*}
-    I_n + \varpi\Mat_{n\times n}(\mathcal{O})\supseteq I_n + \varpi^@\Mat_{n\times n}(\mathcal{O})\supseteq\cdots
+    I_n + \varpi\Mat_{n\times n}(\mathcal{O})\supseteq I_n + \varpi^2\Mat_{n\times n}(\mathcal{O})\supseteq\cdots
 \end{equation*}
 \begin{definition}
-Let $G=\GL_n(F)$ be a group. A smooth representation of $G$ is a pair $(\pi,V)$ such that 
+Let $G\subseteq\GL_n(F)$ be a group. A smooth representation of $G$ is a pair $(\pi,V)$ such that 
 \begin{enumerate}[1.]
 \item $V$ is a complex vector space.
 \item $\pi:G\to \Aut_\C(V)$ is a group homomorphism.
@@ -192,7 +207,7 @@ Let $G=\GL_n(F)$ be a group. A smooth representation of $G$ is a pair $(\pi,V)$ 
 \end{example}
 
 \begin{definition}
-    A representation $(\pi,V)$ is irreducible if $(\pi,V)$ has precisely two subrepresentations (i.e. the trivial representations).
+    A representation $(\pi,V)$ is irreducible if $(\pi,V)$ has precisely two subrepresentations (i.e., the trivial representations $\{0\}$ and itself).
 \end{definition}
 
 \begin{remark}
@@ -200,7 +215,7 @@ Let $G=\GL_n(F)$ be a group. A smooth representation of $G$ is a pair $(\pi,V)$ 
 \end{remark}
 
 \begin{remark}
-    All irreducible smooth representations of $\bQ^\times_p$ are one dimensional.
+    All irreducible smooth representations of $\bQ^\times_p$ are one dimensional. This follows from the fact that all irreducible representations admits a character which agree with the original representation on the center. In our case, as $\bQ_p^\times$ is commutative hence must be the whole.
 \end{remark}
 
 \subsection{Linear Algebraic Groups}
@@ -235,7 +250,7 @@ From now on, $\bG$ will denote the linear algebraic groups and $G= \bG(k)$ the $
 \end{example}
 
 \begin{definition}
-    A linear algebraic group $G$ is a torus if $G\cong (k^\times)^n$ for some $n\in\bN$.
+    A linear algebraic group $G$ is called a torus if $G\cong (k^\times)^n$ for some $n\in\bN$.
 \end{definition}
 
 \begin{theorem}
@@ -258,7 +273,7 @@ $\Sp_{2n}$              & $\left\{A\in\Mat_{n\times n}\:\bigg{\vert}\: \tr(A) = 
 \end{example}
 
 \begin{remark}
-    $G$ acts on $\g$ via the adjoint action. That is the derivation of the conjugation action on itself. Explicitly, for $g\in\GL_n(k)$ and $A\in\Mat_{n\times n}(k)$, we define,
+    $G$ acts on $\g$ via the adjoint action. Precisely, this is the derivation of the conjugation action on itself. Explicitly, for $g\in\GL_n(k)$ and $A\in\Mat_{n\times n}(k)$, we define,
     \begin{equation*}
         \Ad(g)(A) = gAg^{-1}.
     \end{equation*}
@@ -272,11 +287,11 @@ $\Sp_{2n}$              & $\left\{A\in\Mat_{n\times n}\:\bigg{\vert}\: \tr(A) = 
 \end{example}
 
 \begin{definition}
-    $X^*(T)=\Hom_k(T,\bG_m)$ the characters of $T$.
+    $X^*(T)=\Hom_k(T,\bG_m)$ is called the characters of $T$.
 \end{definition}
 
 \begin{example}
-    $X^*(\bG_m(k)) = \Z$ explicitly, this sends $k^\times \ni x\mapsto x^n\in k^\times$ for some $n$.
+    $X^*(\bG_m(k)) \cong \Z$. Explicitly, this isomorphism is $k^\times \ni x\mapsto x^n\in k^\times$ for some $n$.
 \end{example}
 
 From now on, $G$ will denote the connected reductive group. 
@@ -298,8 +313,7 @@ From now on, $G$ will denote the connected reductive group.
 
 \begin{remark}
     $\dim\g_\alpha = 1$ for all $\alpha\in\Phi(G)$ and $\Phi(G)\subseteq X^*(T)\tens{\Z}\bR\cong \bR^n$ which is a root system. Such root systems are classified via Dynkin diagrams.
-    \par The root system $\Phi(G)=\Phi(G;T)$ is independent of $T$ up to isomorphisms.
-    \par $G/Z(G)$ is uniquely determined by $\Phi(G)$.
+    \par The root system $\Phi(G)=\Phi(G;T)$ is independent of $T$ up to isomorphisms and $G/Z(G)$ is uniquely determined by $\Phi(G)$.
 \end{remark}
 
 \begin{example}
@@ -313,27 +327,771 @@ From now on, $G$ will denote the connected reductive group.
     \end{equation*}
     Hence,
     \begin{equation*}
-        \Phi(\GL_n) = \{\mathrm{diag}(t_1,\cdots,t_n)\mapsto t_it_j^{-1}\sep 1\leq i\not= j\leq n\}.
+        \Phi(\GL_n) = \{\mathrm{diag}(t_1,\cdots,t_n)\mapsto t_it_j^{-1}\sep 1\leq i,j\leq n,i\not=j\}.
     \end{equation*}
-    We have 
+    For $n=2$, 
     \begin{equation*}
         X^*(T) = \Z t_1\oplus \Z t_2.
     \end{equation*}
 
     The root system is 
+    \begin{equation*}
+        \Phi(\GL_2) = \{\diag(t_1,t_2)\mapsto t_1t_2^{-1},\diag(t_1,t_2)\mapsto t_2t_1^{-1}\}.
+    \end{equation*}
     \begin{center}
-        \begin{tikzpicture}
-        \filldraw[black] (0,0) circle (2pt);
-        \node[draw] at (0, 0)   (a) {O};
-    \end{tikzpicture}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (1,0) node[right] {$t_1t_2^{-1}$};
+  \draw[->] (0,0) -- (-1,0) node[left] {$t_1^{-1}t_2$};
+  \filldraw[black] (0,0) circle (1pt);
+\end{tikzpicture}
     \end{center}
     %finish this 
-    Also do for $\GL_3$
+    For $n=3$, 
+    \begin{equation*}
+        X^*(T) = \Z t_1\oplus \Z t_2\oplus \Z t_3.
+    \end{equation*}
+    In a graph, this is
+        \begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (1,0) node[right] {$t_1t_2^{-1}$};
+  \draw[->] (0,0) -- (0.5,0.866) node[above right] {$t_1t_3^{-1}$};
+  \draw[->] (0,0) -- (-1,0) node[left] {$t_1^{-1}t_2$};
+  \draw[->] (0,0) -- (-0.5,-0.866) node[below left] {$t_1^{-1}t_3$};
+  \draw[->] (0,0) -- (0.5,-0.866) node[below right] {$t_2^{-1}t_3$};
+  \draw[->] (0,0) -- (-0.5,0.866) node[above left] {$t_2t_3^{-1}$};
+\end{tikzpicture}
+    \end{center}
 \end{example}
 
 \begin{remark}
-    A reductive group is called semisimple if its center is finite. Root system does not determine the groups however, they do determine groups modulo their center.
+    A reductive group is called semisimple if its center is finite. Root system does not determine the groups, however, they do determine groups modulo their center.
 \end{remark}
+%current
+%10/21
+
+\begin{definition}
+    \label{definition_2_1}
+    For a root system $\Phi$, a subset $\Delta\subseteq\Phi$ is called a basis of it if every element of the root system can be written as a linear combination of elements of $\Delta$ 
+    \begin{equation*}
+        \sum_{\alpha\in\Delta}a_{\alpha}\alpha,
+    \end{equation*}
+    such that either $a_{\alpha}$ are all non-negative or they are all non-positive.
+\end{definition}
+
+\begin{example}
+    For $G = \GL_n$, we have,
+    \begin{equation*}
+        \Delta(\GL_n) = \left\{\begin{pmatrix}
+            t_1 &\: &\: \\
+            \: & \ddots &\:\\
+            \: & \: & t_n
+        \end{pmatrix}
+        \mapsto t_it_{i+1}^{-1}\:\bigg{\vert}\: 1\leq i< n\right\} = \Delta(\SL_n).
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    For $G=\Sp_{2n}$ and a torus 
+    \begin{equation*}
+        T = \{\mathrm{diag}(t_1,\cdots,t_n,t^{-1}_1,\cdots,t_n^{-1})\sep t_1,\cdots,t_n\in F^\times\},
+    \end{equation*}
+    the root system is given by 
+    \begin{equation*}
+        \Phi(\Sp_{2n}) \{\mathrm{diag}(t_1,\cdots,t_n,t^{-1}_1,\cdots,t_n^{-1})\mapsto t_i^{\pm1}t_j^{\pm 1},t_i^{\pm2}\sep 1\leq i\not=j\leq n\}.
+    \end{equation*}
+    % insert a illustration for the root system of $\Sp_4$.
+    In particular, for $n=2$<, we have the following diagram.
+    \begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (1,0) node[right] {$t_1t_2^{-1}$};
+  \draw[->] (0,0) -- (0.707,0.707) node[above right] {$t_1^2$};
+  \draw[->] (0,0) -- (0,1) node[above] {$t_1t_2$};
+  \draw[->] (0,0) -- (-1,0) node[left] {$t_1^{-1}t_2$};
+  \draw[->] (0,0) -- (-0.707,-0.707) node[below left] {$t_1^{-2}$};
+  \draw[->] (0,0) -- (0.707,-0.707) node[below right] {$t_2^{-2}$};
+  \draw[->] (0,0) -- (-0.707,0.707) node[above left] {$t_2^{2}$};
+  \draw[->] (0,0) -- (0,-1) node[below] {$t_1^{-1}t_2^{-1}$};
+\end{tikzpicture}
+    \end{center}
+    The basis is given by 
+    \begin{equation*}
+        \Delta(\Sp_{2n}) = \{\mathrm{diag}(t_1,\cdots,t_n,t^{-1}_1,\cdots,t_n^{-1})\mapsto t_i^{1}t_{i+1}^{- 1},t_i^{2}\sep 1\leq i<n\}.
+    \end{equation*}
+\end{example}
+
+\begin{definition}
+    A subgroup $P$ of a reductive group $G$ is called parabolic if it is Zariski-closed and and $G/P$ is projective. %look up how this quotient is actually defined.
+\end{definition}
+\begin{definition}
+    A Borel subgroup of a reductive group $G$ is a maximal connected solvable Zariski closed subgroup of $G$.
+\end{definition}
+\begin{remark}
+    A subgroup is parabolic  if and only if it is Zariski-closed and contains some Borel subgroup.
+\end{remark}
+
+\begin{theorem}
+    All Borel subgroups are conjugate to one another.
+\end{theorem}
+
+
+\begin{example}
+    In $\GL_n$, a subgroup of upper-triangular matrices is Borel. Hence the subset all block-upper-triangular matrices is parabolic.
+\end{example}
+
+\begin{theorem}
+    There is a one-to-one correspondence between following sets.
+    \begin{equation*}
+        \left\{\substack{\text{Parabolic subgroups containing}\\\text{a fixed Borel subgroup $B$}}\right\}\stackrel{1:1}{\leftrightarrow}\{\text{Subsets of a basis $\Delta$ of the root system $\Phi(\GL_n)$}\}.
+    \end{equation*}
+\end{theorem}
+
+Let $T\subseteq B$ be a torus contained in a Borel subgroup. Then we have 
+\begin{equation*}
+    \Lie(B) = \underbrace{\mathfrak{Z}}_{\defeq \Lie(T)}\bigoplus_{\alpha\in\Phi^+(G)}\g_\alpha,
+\end{equation*}
+where 
+\begin{equation*}
+    \Phi^+(G)\defeq\left\{\sum_{\alpha_i\in\Delta}n_i\alpha_i\:\bigg{\vert}\: \forall i, n_i\geq0\right\}\subseteq\Phi(G).
+\end{equation*}
+
+\begin{example}
+    For $G=\GL_n$, 
+    \begin{equation*}
+        \Phi^+(\GL_n) = \{\mathrm{diag}(t_1,\cdots,t_n)\mapsto t_it_j^{-1}\sep 1\leq i<j\leq n\}.
+    \end{equation*}
+\end{example}
+
+Observe that $t_it_{i+1}^{-1}$ corresponds to a entry one above the diagonal. Since standard parabolic subgroups are block-upper-triangular, we can encode which blocks to include by which one-above diagonal elements to include. 
+\par That is to say under the bijection above, we have a following correspondence between parabolic subgroups and subsets of the basis.
+\begin{equation*}
+    P\leftrightarrow \Theta\subseteq\Delta.
+\end{equation*}
+Where $\rightarrow$ is given by 
+\begin{equation*}
+    P\mapsto \Lie(P) = \mathfrak{Z}\oplus\bigoplus_{\alpha\in\Phi^+(G)}\g_\alpha\oplus\bigoplus_{\substack{\alpha\in\Theta}}\g_{-\alpha}.
+\end{equation*}
+
+Clearly $B$ corresponds to the empty subset and the whole group $G$ corresponds to the whole basis.
+
+\begin{theorem}
+    Let $G$ be a reductive group and $P$ be a parabolic subgroup of it. 
+    \begin{enumerate}[1. ]
+        \item $P$ is reductive $\iff$ $P=G$.
+        \item $P$ is isomorphic to the semidirect product $M\ltimes N$ where $M$ is a reductive subgroup and $N$ is the unipotent radical of $P$. Such $M$ is said to be a Levi subgroup. This decomposition is not unique.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    For a block-upper-triangular matices, the Levi subgroup will be the block-diagonal matrices and the unipotent radical is the subgroup whose matrices have the block diagonal all $I_k$ for some $k$.
+\end{example}
+
+\begin{definition}
+    Let $\alpha\in\Phi(G)$, define $U_\alpha$ to be the unique connected $T$-stable Zariski-closed subgroup of $G$ whose Lie algebra is $\g_\alpha$. Such $U_\alpha$ is called the root subgroup.
+\end{definition}
+
+\begin{example}
+    For $G=\GL_n$ and $\alpha(\mathrm{diag}(t_1,\cdots,t_n)) = t_it_j^{-1}$, the root subgroup is the subgroup of all matrices whose diagonal entries are all $1$ and only non-zero off-diagonal entry is $(i,j)$-th entry which hold any value. In particular, $U_\alpha \cong (k,+)$ for any root $\alpha$.
+\end{example}
+
+\begin{proposition}
+    Let $B$ be a Borel subgroup then we can write $B =T\ltimes U$ where $U$ is the unipotent radical of $B$. Then $U\stackrel{\simeq}{\text{as a variety}}\prod_{\alpha\in\Phi^+(G)}U_\alpha$.
+\end{proposition}
+
+\begin{definition}
+    Let $N(T)$ be the normalizer of $T$, then the Weyl group $W$ of $G$ is $W(T) = N(T)/T$ which admits a natural action on $T$ by conjugation.
+\end{definition}
+
+\begin{example}
+    \begin{equation*}
+        W(\GL_n) \cong S_n
+    \end{equation*}
+    where each element of $S_n$ corresponding to the permuting the diagona entries. It can be shown that all elements of $N(T)$ are a product an element of $T$ and a permutation matrix.
+\end{example}
+\begin{example}
+    \begin{equation*}
+        W(\Sp_{2n})\cong S_n\rtimes (\Z/2\Z)^n
+    \end{equation*}
+    where $S_n$ corresponds to the permutation of the diagonal entries and $(\Z/2\Z)^n$ corresponds to the swapping of the corresponding elements (i.e., one and inverse of it). 
+\end{example}
+
+\begin{definition}
+    A reflection of an element of a root system $\alpha\in\Phi$ is a linear map such that 
+    \begin{equation*}
+        s_\alpha(\alpha) = -\alpha,
+    \end{equation*}
+    and all elements orthogonal to $\alpha$ are unchanged under $s_\alpha$.
+\end{definition}
+
+\begin{proposition}
+    $W$ is the Weyl group of $\Phi(G)$. That is $W$ is isomorphic to the group generated by the reflections of each element $\alpha\in\Phi$. 
+\end{proposition}
+
+\begin{theorem}[Bruhat Decomposition]
+    For a reductive group $G$ and its Weyl group $W$ of a torus $T$, for each $w\in W$, there is $n_w$ whose quotient by $T$ is $w$. We have the following decomposition $G=\coprod_{w\in W}Bn_wB$.
+\end{theorem}
+
+\begin{theorem}
+    \begin{equation*}
+        Bn_wB\underbrace{\simeq}_{\text{as varieties}}B\times\{n_w\}\times\prod_{\substack{\alpha\in\Phi^+(G)\\ w^{-1}(\alpha)\not\in\Phi^+(G)}}U_\alpha,
+    \end{equation*}
+    where the isomorphism $\leftarrow $ is given by multiplication.
+\end{theorem}
+
+\section{Linear Algebraic Groups over $F$}
+
+As was in the previous section, we set $F$ to be a non-archimedian local field or a finite field. (Some statements still hold without these assumptions).
+
+\begin{definition}
+    A linear algebraic group over $F$ is a geometrically reduced closed $F$-subgropu of $\GL_n/F$ for some integer $n$. ($F$-subgroup is the one corresponds to a vanishing of some ideal which is defined over $\overline{F}$).
+    \par Equivalently, a linear algebraic gropu is a smooth affine group scheme of finite type over the field $F$.
+\end{definition}
+
+\begin{definition}
+    A liner algebraic group $\G$ over $F$ is said to be reductive if its base-change $\G_{\overline{F}} = \G\fib{F}\overline{F}\defeq \G\fib{\Spec F}\Spec \overline{F}$ to the algebraic closure of $F$ is reductive.
+    \par Equivalently $(R\G_{\overline{F}})_u$ is trivial.
+\end{definition}
+
+\begin{example}
+    $\GL_n/F,\SL_n/F,\SO_n/F,\Sp_{2n}$ are all reductive.
+\end{example}
+
+\begin{definition}
+    An $F$-torus or just a torus over $F$ is a linear algebraic group $T$ over $F$ such that $T_{\overline{F}}$ is a torus (i.e., $T_{\overline{F}}\cong \G_m^n$)
+\end{definition}
+
+\begin{example}
+    For $F'/F$ a finite extension, we have,
+    \begin{equation*}
+        \bT(F') = \{\mathrm{diag}(t_1,t_2)\in\GL_2(F')\}\cong ({F'}^\times)^2.
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    Let $F = \bQ_p$ and $E = \bQ_p(\sqrt{p})$ which is a quadratic extension, 
+    \begin{equation*}
+        \bT_2(F') = \left\{\begin{pmatrix}
+        a & b \\ pb &a
+        \end{pmatrix}\in\GL_2(F')\right\}.
+    \end{equation*}
+\end{example}
+
+\begin{remark}
+    $\bT_2(F)\simeq E^\times$ given by 
+    \begin{equation*}
+        \begin{pmatrix}
+            a & b\\
+            pb & a
+        \end{pmatrix}
+        \mapsto a+b\sqrt{p}.
+    \end{equation*}
+\end{remark}
+
+\begin{exercise}
+In the second example, $\bT_2(\overline{F})\simeq (\overline{F}^\times)^2$. 
+\end{exercise}
+
+\begin{remark}
+    The same definition for the tosu also works for $F=\bR$ and consider, $F' = \bR$ or $\C$, 
+    \begin{equation*}
+        \bT_3 = \left\{\begin{pmatrix}
+            x & y \\ -y ^x 
+        \end{pmatrix}\right\}\subseteq\SL_2(F')
+    \end{equation*}
+    Then $\bT_2(\C) \cong \C^\times $ and 
+    \begin{equation*}
+        \bT(\bR)=\left\{\begin{pmatrix}
+            \cos\theta&\sin\theta\\ -\sin\theta&\cos\theta
+        \end{pmatrix}\:\bigg{\vert}\:\theta\in\bR\right\}.
+    \end{equation*}
+    In particular $\bT_3(\bR)\cong S^\times\cong \C^\times$. Furthermore $(\bT_3\times \bT_3)(\bR)\cong S^1\times S^1$ which is a torus.
+\end{remark}
+
+\begin{definition}
+    $\G_m = \GL_1$ (i.e., $\G_m(F') \cong (F')^\times$) for any field extension $F'/F$. An $F$-torus $\bT$ is split or $F$-split if $\bT\cong \G_m^N$ for some $N$.
+\end{definition}
+
+\begin{example}
+    $\bT_1$ is split but $\bT_2$ is not. The former is obvious and latter is due to that $E^\times\not\cong (F^\times)^n$ for any $n$. This is also seen that base changin $\G_m^N$ to the algebraic closure gives $(\overline{F})^N$.
+\end{example}
+
+\begin{theorem}[Grothendieck]
+    If $G$ is a linear algebraic group then there is an $F$-torus $\bT$ inside $G$ such that $\bT_{\overline{F}}$ is a maximal torus.
+\end{theorem}
+
+\begin{definition}
+    A reductive group $\G$ over $F$ is said to be split or $F$-split if it contains a split maximal torus that is split.
+\end{definition}
+
+\begin{example}
+    $\GL_n,\bT_1$ are split but $\bT_2$ is not split.
+\end{example}
+
+\begin{proposition}
+    For a split reductive group $G$, we can define a root groups $U_\alpha$ for $\alpha\in\Phi(G)$ over $F$, and similarly other notions such as Borel, parabolic, and so on.
+\end{proposition}
+
+%10/28
+
+\section{Representation Theory}
+We will assume that $G=\G(F)$ where $\G$ is a connected reductive group (or for many result $G$ is locally compact Hausdorff topological group so that compact open subgroups form a basis for the neighborhoods of the identity and for any compact open subgroup $K\subseteq G$, $G/K$ is countable).
+
+\begin{definition}
+    \label{definition_3_1}
+    A smooth representation $(\pi,V)$ of $G$ is a complex vector space $V$ with a group homomorphism $\pi:G\to \Aut(V)$ such that for any $v\in V$, $\Stab_G(v)$ is open.
+\end{definition}
+
+\begin{proposition}
+    The following statements are equivalent for a representation $(\pi,V)$ of $G$.
+    \begin{enumerate}[1.]
+        \item It is smooth.
+        \item $V = \bigcup_{\substack{K\subseteq G\\\text{compact open}\\\text{subgroup}}}V^K$.
+        \item The map $G\times V\ni (g,v)\mapsto\pi(g)(v)$ where $V$ is endowed with the discrete topology is continuous.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    \label{definition_3_2}
+    A morphism of two smooth representation is a $\C$-linear map of their vector spaces which is $G$-equivariant.
+\end{definition}
+
+\begin{remark}
+    The category $\Rep(G)$ of smooth representations is abelian together with the morphism in Definition \ref{definition_3_2}.
+\end{remark}
+
+\begin{definition}
+    \label{definition_3_3}
+    A smooth representation is irreducible if it contains precisely two subrepresentations.
+\end{definition}
+
+\begin{lemma}
+    \label{lemma_3_1}
+    Let $(\pi,V)$ be a smooth irreducible representation of $G$, then $\dim_\C V$ is countable. If $G$ is compact, then $\dim_\C V$ is finite. 
+\end{lemma}
+
+\begin{proof}
+    Let $0\not=v\in V$ and $K\subseteq G$ compact such that $v\in V^K$. Since $V$ is irreudcible, $V = \Span_\C\{\pi(g)(v)\sep g\in G\}$. However, as $K$ is fixing $v$, we can also write,
+    \begin{equation*}
+        V = \Span_\C\{\pi(g)(v)\sep g\in G/K\}.
+    \end{equation*}
+    As $G/K$ is countable, hence the first assertion. Furthermore, if $G$ is compact, then the latter also follows.
+\end{proof}
+
+\begin{theorem}[Schur's Lemma]
+    \label{theorem_3_1}
+    If $(\pi,V)$ is irreducible then $\End_G(V)\cong \C$.
+\end{theorem}
+
+\begin{proof}
+    Since for $f\in\End(V)$, $\ker f,\image f$ are both subrepresentations, hence either $f$ is $0$ or bijection. Hence $\End_G(V)$ is a division algebra over $\C$. Note that $f\in\End_G(V)$ is determiend by an image of $v\in V\backslash\{0\}$, hence $\End_G(V)$ is of countable dimension.
+    \par Suppose $f\not=c\cdot\id_V$ for some $c\in \C$, then $\{(f-c\id_V)^{-1}\sep c\in\C\}$ is linearly independent and uncountable hence a contradiction.
+\end{proof}
+
+\begin{definition}
+    \label{definition_3_4}
+    A smooth representation $(\pi,V)$ is admissible if for any compact open subgroup $K\subseteq G$, $V^K$ is of finite dimension.
+\end{definition}
+
+\begin{proposition}
+    \label{proposition_3_1}
+    A smooth ireducible representation of $G$ is admissible.
+\end{proposition}
+
+\begin{definition}
+    \label{definition_3_5}
+    Let $H$ be a closed subgroup of $G$ then the induction of a smooth $H$-representation $(\sigma,W)$ is a $G$-representation $(\Ind_H^G(\sigma),\Ind_H^G(W))$ such that 
+    \begin{equation*}
+        \Ind_H^G(W) \defeq\left\{f:G\to W\:\bigg{\vert}\: \substack{\forall g\in G, h\in H, f(hg) = \sigma(h)f(g)\\ \exists K(f)\subseteq G \text{ a compact open subgroup}\\\text{ depending on $f$, } \forall k\in K(f), f(gk) = f(g)}\right\}.
+    \end{equation*}
+    And the action $\Ind_H^G(\sigma)$ is defined as follows.
+    \begin{equation*}
+        \forall g\in G,f\in\Ind_H^G(W), \Ind_H^G(\sigma)(g)(f) = f(\cdot g).
+    \end{equation*}
+\end{definition}
+
+\begin{lemma}[Frobenius Reciprocity]
+    \label{lemma_3_2}
+    For $(\sigma,W)\in\Rep(H),(\pi,V)\in\Rep(G)$, we have 
+    \begin{equation*}
+        \Hom_G(V,\Ind_H^G(W))\cong \Hom_H(\Res_H^G(V),W).
+    \end{equation*}
+    That is $\Res_H^G\dashv \Ind_H^G$.
+\end{lemma}
+
+\begin{proof}Exercise to fill the details. The idea is 
+    \begin{center}
+        \begin{tikzcd}
+{\Hom_G(V,\Ind_H^G(W))} \arrow[r, "{\alpha\mapsto\beta_\alpha\defeq [V\ni v\mapsto \alpha(v)(1_H)]}", shift left] & {\Hom_H(\Res_H^G(V),W)} \arrow[l, "{\alpha_\beta\defeq[V\ni v\mapsto [G\ni g\mapsto \beta(\pi(g))(v)]]\mapsfrom \beta}", shift left]
+\end{tikzcd}
+    \end{center}
+\end{proof}
+
+\begin{definition}
+    \label{definition_3_6}
+    For $H$-representation $(\sigma,W)$, where $H\subseteq G$ is a closed subgroup. The compact-induction is a subrepresentation $(c-\mathrm{ind}_H^G(\sigma),c-\mathrm{ind}_H^G(W))$ of $(\Ind_H^G(\sigma),\Ind_H^G)$ such that for any $f\in c-\mathrm{ind}_H^G(W)$, the support of $f$ has a compact image in $H\backslash G$.
+\end{definition}
+
+\begin{lemma}
+    \label{lemma_3_3}
+    Both $\Ind_H^G$ and $c-\mathrm{ind}_H^G$ are both additive and exact.
+\end{lemma}
+
+\begin{lemma}
+    \label{lemma_3_4}
+    Let $H,G,(\sigma,W),(\pi,V)$ as in Lemma \ref{lemma_3_2}. Furthermore, assume that $H$ is open. THen 
+    \begin{equation*}
+        \Hom_G(c-\mathrm{ind}_H^G(W),V)\cong \Hom_H(W,\Res_H^G(V)).
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Exercise.
+\end{proof}
+
+\begin{definition}[Parabolic Induction]
+    \label{definition_3_7}
+    Let $\bP=\mathbb{M}\ltimes \bN\subseteq\mathbb{G}$ be a parabolic subgroup with Levi decomposition (i.e., $\mathbb{P},\mathbb{M},\mathbb{N}$ are subgroups of $\mathbb{G}$ over $F$ such that $\mathbb{P}_{\overline{F}}=\mathbb{M}_{\overline{F}}\ltimes \mathbb{N}_{\overline{F}}\subseteq \mathbb{G}_{\overline{F}}$).
+    \par Let $(\sigma,V_\sigma)$ to be a smooth representation of $M=\mathbb{M}(F)$. Then $\Ind_P^G(\sigma)\defeq \Ind_{M\times N}^G\sigma\ltimes\triv$.
+\end{definition}
+
+\begin{remark}
+    Some authors normalize induction by replacing $\sigma(m)$ by $\sigma(m)\delta_p^{2^{-1}}(m)$ where 
+    \begin{equation*}
+        \delta_p(m) = \vert\det\mathrm{Ad}_{\Lie(N)}(m)\vert.
+    \end{equation*}
+\end{remark}
+
+\begin{definition}
+    \label{definition_3_8}
+    An irreducible smooth representation $(\pi,V)$ of $G$ is called supercuspidal if for any parabolic subgroup $\bP=\mathbb{M}\bN\subsetneq \G$ and every irreducible smooth representation $(\sigma,V_\sigma)$ of $M$, we have $(\pi,V)\not\hookrightarrow (\Ind_P^G\sigma,\Ind_P^G(V_\sigma)) $
+\end{definition}
+
+\begin{proposition}
+    \label{proposition_3_2}
+    Let $(\pi,V)$ be an irreducible smooth representation of $G$, then there is a parabolic subgroup $\mathbb{P}=\mathbb{M}\mathbb{N}\subseteq \mathbb{G}$ such that a supercuspidal representation $(\sigma,V_\sigma)$ of $M$ whose parabolic induction contains $\pi$ that is 
+    \begin{equation*}
+        (\pi,V)\hookrightarrow (\Ind_P^G\sigma,\Ind_P^G V_\sigma).
+    \end{equation*}
+\end{proposition}
+
+\section{Moy-Prasad Filtrations}
+
+Suppose $\mathbb{G}$ is a split reductive group. 
+
+\begin{definition}
+    Let $\alpha,\beta\in\Phi(G)$, $X_\beta\in \g_\beta(F)\backslash\{0\}$ and $s_\beta$ be the corresponding reflection in $W_G(T)$. $w_\beta$ is the explicit lift of $s_\beta$ in $N(T)$ constructed from $X_\beta$.
+\end{definition}
+
+\begin{remark}
+    For the notion of explicit lift see the literature.
+\end{remark}
+
+\begin{example}
+    For $G=\SL_2$, $X_\beta = \begin{pmatrix}
+        0&1\\0&0
+    \end{pmatrix}$ and $w_\beta = \begin{pmatrix}
+        0 & 1\\ -1&0
+    \end{pmatrix}$
+\end{example}
+
+\begin{definition}
+    A Chevalley system $\{X_\alpha\}_{\alpha\in\Phi(G)}$ is such that $X_\alpha\in\g_\alpha(F)$ a basis element for each $\alpha\in\Phi(G)$ such that 
+    \begin{equation*}
+        \Ad(w_\beta)(X_\alpha) = \pm X_{s_\beta(\alpha)}.
+    \end{equation*}
+    (The sign can be chosen explicitly)
+\end{definition}
+
+\begin{example}
+    For $\GL_n$ and $X_{t_i,t_j^{-1}}$ % finish later
+\end{example}
+
+\begin{definition}[BT-Triple]
+    A BT-triplet $(\mathbb{T},\{X_\alpha\},X_{\mathrm{BT}})$ consists of
+    \begin{enumerate}
+        \item a split maximal torus $\mathbb{T}\subseteq\G$,
+        \item a Chevalley system $\{X_\alpha\}_{\alpha\in\Phi(G)}$,
+        \item $X_\mathrm{BT}\in \underbrace{X_*(T)}_{\defeq \Hom(\G_m,\mathbb{T})}\tens{\Z} \bR\cong \bR^n$.
+    \end{enumerate}
+\end{definition}
+
+%maximal split = split maximal under the assumption that $\G$ is splti.
+
+\section{Moy-Prasad Filtration}
+
+\begin{definition}
+    For $T=\bT(F)$, 
+    \begin{align*}
+        T_0 &= \{t\in T\sep \forall \chi\in X^*(\bT), \mathrm{val}(\chi(t))=0\},\\
+        T_r &= \{t\in T_0\sep\forall \chi\in X^*(\bT), \mathrm{val}(\chi(t)-1)\geq r\}.
+    \end{align*}
+\end{definition}
+
+\begin{example}
+    For $\G=\GL_n$, we have
+    \begin{align*}
+        T &= \{\diag(a_1,\cdots,a_n)\sep a_1,\cdots,a_n\in F^\times\},\\
+        T_0 &= \{\diag(a_1,\cdots,a_n)\sep a_1,\cdots,a_n\in\Ouv_F^\times\},\\
+        T_r & = \{\diag(a_1,\cdots,a_n)\sep a_1,\cdots,a_n\in1+\varpi^{\lceil r\rceil}\Ouv_F^\times\}.
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    For $F=\bQ_p$ and $\Ouv_F = \Z_p$, we have the uniformizer $\varpi=p$. In terms of congruence groups of modular forms,
+    \begin{equation*}
+        T_k \equiv \{I_n\}\mod{p^k\Z_p}.
+    \end{equation*}
+\end{remark}
+
+\begin{definition}
+    Recall that $\Hom(\G_m,\G_m)\cong \Z$. Hence for $\alpha\in X^*(\bT)$ and $x_{\mathrm{BT}}\in X_*\tens{\Z}\bR$, $\alpha(x_{\mathrm{BT}})\in \Hom(\G_m,\G_m)\tens{\Z}\bR$, hence it corresponds to some $r$ such that 
+    \begin{equation*}
+        \alpha(x_{\mathrm{BT}})(y) = y^r
+    \end{equation*}
+    for some $r$. Hence, we define $\alpha(x_{\mathrm{BT}})=r$.
+\end{definition}
+
+\begin{definition}
+    For the root group $U_\alpha=\mathbb{U}_\alpha(F)$ of $\alpha\in\Phi(\G,\bT)$, we have 
+    \begin{equation*}
+        x_\alpha:\G_a\stackrel{\simeq}{\to}\mathbb{U}_\alpha,
+    \end{equation*}
+    where $\G_a$ is the additive group such that $\G_a(F) = (F,+)$. Then 
+    \begin{equation*}
+        \Lie(x_\alpha):\G_a\ni 1\mapsto X_\alpha\in \g_\alpha.
+    \end{equation*}
+    We then define,
+    \begin{equation*}
+        U_{\alpha,x,r}\defeq x_\alpha(\varpi^N(\Ouv_F)),
+    \end{equation*}
+    where $N$ is the smallest integer such that $\alpha(X_{\mathrm{BT}})+N\geq r$.
+\end{definition}
+
+\begin{example}
+    For $\G=\SL_2$ and we choose BT-triplet to be 
+    \begin{equation*}
+        x_1\defeq \left(\{\diag(t,t^{-1})\sep t\in F^\times\}, \begin{pmatrix}
+            0 & 1 \\ 0 & 0
+        \end{pmatrix},\begin{pmatrix}
+            0 & 0 \\ 1 & 0
+        \end{pmatrix}, x_{\mathrm{BT}}=0\right).
+    \end{equation*}
+    Note that we have 
+    \begin{equation*}
+        \Z\tens{\Z}\bR\ni n\mapsto (F^\times\ni t\mapsto \diag(t^n,t^{-n}))\in X_*(\bT)\tens{\Z}\bR.
+    \end{equation*}
+    Let us choose $\alpha\in\Phi(\SL_2)=\{\pm\alpha\}$ where 
+    \begin{equation*}
+        \alpha(\diag(t,t^{-1})) \mapsto t^2, -\alpha(\diag(t,t^{-1})) \mapsto t^{-2}. 
+    \end{equation*}
+    Then 
+    \begin{equation*}
+        \g_\alpha=\left\{\begin{pmatrix}
+            0 & \ast\\ 0& 0
+        \end{pmatrix}\right\}.
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        F\ni y \stackrel{x_\alpha}{\mapsto}U_\alpha = \left\{\begin{pmatrix}
+            0 & \ast\\ 0& 0
+        \end{pmatrix}\right\}
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \G_a\ni 1\stackrel{\Lie(x_\alpha)}{\mapsto}\begin{pmatrix}
+            0 & 1\\ 0& 0
+        \end{pmatrix}\in\g_\alpha.
+    \end{equation*}
+    With these identifications, 
+    \begin{align*}
+        U_{\alpha,x,r} &= x_\alpha(\varpi^{\lceil r-\alpha(x_{\BT})\rceil}\Ouv_F) = x_\alpha(\varpi^{\lceil r\rceil}\Ouv) = \left\{\begin{pmatrix}
+            1 & \varpi^{\lceil r\rceil}\Ouv_F\\ 0& 1
+        \end{pmatrix}\right\},\\
+        U_{-\alpha,x,r} &= x_{-\alpha}(\varpi^{\lceil r+\alpha(x_{\BT})\rceil}\Ouv_F) = x_{-\alpha}(\varpi^{\lceil r\rceil}\Ouv) = \left\{\begin{pmatrix}
+            1 & 0\\ \varpi^{\lceil r\rceil}\Ouv_F& 1
+        \end{pmatrix}\right\}
+    \end{align*}
+    \label{example_4_1}
+\end{example}
+
+\begin{example}
+    We continue the basic setting in Example \ref{example_4_1}. This time we choose $\BT$-triplet to be 
+    \begin{equation*}
+         x_2\defeq \left(\{\diag(t,t^{-1})\sep t\in F^\times\}, \begin{pmatrix}
+            0 & 1 \\ 0 & 0
+        \end{pmatrix},\begin{pmatrix}
+            0 & 0 \\ 1 & 0
+        \end{pmatrix}, x_{\mathrm{BT}}={\frac 1 4}\right).
+    \end{equation*}
+    Observe that for the same $\alpha$ in Example \ref{example_4_1}, 
+    \begin{equation*}
+        t\mapsto \diag(t,t^{-1})\stackrel{\alpha}{\mapsto}t^2.
+    \end{equation*}
+    Hence we obtain 
+    \begin{equation*}
+        \alpha(x_\BT) = {\frac 1 2}.
+    \end{equation*}
+    In this case, 
+    \begin{align*}
+        U_{\alpha,x,r} &= x_\alpha\left(\varpi^{\lceil r-\alpha(x_{\BT})\rceil}\Ouv_F\right) = x_\alpha\left(\varpi^{\left\lceil r-{\frac 1 2}\right\rceil}\Ouv\right) = \left\{\begin{pmatrix}
+            1 & \varpi^{\left\lceil r-{\frac 1 2}\right\rceil}\Ouv_F\\ 0& 1
+        \end{pmatrix}\right\},\\
+        U_{-\alpha,x,r} &= x_{-\alpha}\left(\varpi^{\lceil r+\alpha(x_{\BT})\rceil}\Ouv_F\right) = x_{-\alpha}\left(\varpi^{\left\lceil r+{\frac 1 2}\right\rceil}\Ouv\right) = \left\{\begin{pmatrix}
+            1 & 0\\ \varpi^{\left\lceil r+{\frac 1 2}\right\rceil}\Ouv_F& 1
+        \end{pmatrix}\right\}.
+    \end{align*}
+    Hence in this case,
+    \begin{equation*}
+        U_{\alpha,x_2,0}=\left\{\begin{pmatrix}
+        1& \Ouv_F\\  0 &1
+        \end{pmatrix}\right\},U_{-\alpha,x_2,0}=\left\{\begin{pmatrix}
+        1& 0\\  \varpi\Ouv_F & 1
+        \end{pmatrix}\right\}
+    \end{equation*}
+    \label{example_4_2}
+\end{example}
+
+\begin{definition}[Moy-Prasad Filtration]
+    Let $r\geq0$ and $x$ be a $\BT$-triplet. Then 
+    \begin{equation*}
+        G(F)\supset G(F)_{x,r} = G_{x,r}\defeq \langle T_r,U_{\alpha,x,r}\sep\alpha\in\Phi(G)\rangle.
+    \end{equation*}
+\end{definition}
+
+\begin{example}
+    Let $\G=\SL_2$ and $x_1,x_2$ from Example \ref{example_4_1},
+    \begin{equation*}
+        G_{x_1,0} = \SL_2(\Ouv_F), G_{x_1,r} = \left\{\begin{pmatrix}
+        1+\varpi^{\lceil r\rceil}\Ouv_F & \varpi^{\lceil r\rceil}\Ouv_F \\ \varpi^{\lceil r\rceil}\Ouv_F &1+\varpi^{\lceil r\rceil}\Ouv_F.
+        \end{pmatrix}\right\}_{\det=1}.
+    \end{equation*}
+    Also from Example \ref{example_4_2}, we see 
+    \begin{equation*}
+        G_{x_2,0} =\left\{\begin{pmatrix}
+        \Ouv_F & \Ouv_F \\ \varpi\Ouv_F & \Ouv_F
+        \end{pmatrix}\right\}_{\det=1}, G_{x_2,r} = \left\{\begin{pmatrix}
+        1+\varpi^{\lceil r\rceil}\Ouv_F & \varpi^{\left\lceil r-{\frac 1 2}\right\rceil}\Ouv_F \\ \varpi^{\left\lceil r+{\frac 1 2}\right\rceil}\Ouv_F &1+\varpi^{\lceil r\rceil}\Ouv_F.
+        \end{pmatrix}\right\}_{\det=1}.
+    \end{equation*}
+\end{example}
+
+\begin{definition}
+    Groups of the form $G_{x,0}$ are called parahoric subgroups of $G$ and $G_{x,r+}=\bigcup_{s>r}G_{x,s}$. 
+\end{definition}
+
+\begin{proposition}$\:$
+    \begin{enumerate}
+        \item $G_{x,r}\triangleleft G_{x,0}$.
+        \item $G_{x,0}/G_{x,0+}$ is $k_F$ poiints of the reductive group where $k_F$ is the residue field of $F$.
+        \item For $r>0$, $G_{x,r}/G_{x,r+}$ is a $k_F$-vectorspace.
+    \end{enumerate}
+\end{proposition}
+
+\begin{example}
+    For $\G=\SL_2$ and in Example \ref{example_4_1},
+    \begin{equation*}
+        G_{x_1,0}/G_{x_1,0+}\cong \SL_2(k_F).
+    \end{equation*}
+    For $\G=\SL_2$ and in Example \ref{example_4_2},
+    \begin{align*}
+        G_{x_2,0}/G_{x_2,0+}&\cong \left\{ \begin{pmatrix}
+        \Ouv_F & \Ouv_F \\ \varpi\Ouv_F & \Ouv_F
+        \end{pmatrix}\right\}_{\det=1}\bigg{/}\left\{ \begin{pmatrix}
+        1+\varpi\Ouv_F & \Ouv_F \\ \varpi\Ouv_F & 1+\varpi \Ouv_F
+        \end{pmatrix}\right\}_{\det=1}\\
+        &\cong \{\diag(t,t^{-1})\sep t\in k_F^\times\}\cong \G_m(k_F).
+    \end{align*}
+\end{example}
+\begin{example}
+    For $\G=\SL_2$ and in Example \ref{example_4_1},
+    \begin{equation*}
+        G_{x_1,n}/G_{x_1,n+}\cong \Mat_{n\times n}(k_F)_{\tr=0}.
+    \end{equation*}
+    For $\G=\SL_2$ and in Example \ref{example_4_2},
+    \begin{align*}
+        G_{x_2,{\frac 1 2}}/G_{x_2,{\frac 1 2}+}&\cong \left\{ \begin{pmatrix}
+        1+\varpi\Ouv_F & \Ouv_F \\ \varpi\Ouv_F & 1+\varpi\Ouv_F
+        \end{pmatrix}\right\}_{\det=1}\bigg{/}\left\{ \begin{pmatrix}
+        1+\varpi\Ouv_F & \varpi\Ouv_F \\ \varpi^2\Ouv_F & 1+\varpi \Ouv_F
+        \end{pmatrix}\right\}_{\det=1}\\
+        &\cong \left\{\begin{pmatrix}
+        0 & k_F\\ k_F & 0
+        \end{pmatrix}\right\}\cong k_F^2.
+    \end{align*}
+    Furthermore,
+    \begin{align*}
+        G_{x_2,1}/G_{x_2,1+}&\cong \left\{\begin{pmatrix}
+            k_F & \: \\ \:& k_F
+        \end{pmatrix}\right\}_{\tr=0}\cong k_F.
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    $G_{x,0}/G_{x,0+}\circlearrowright G_{x,r}/G_{x,r+}$ for $r>0$ by conjugation. This turns out to be linear algebraic action.
+\end{remark}
+
+\begin{remark}
+    $r_1,r_2\in \bR_{\geq0}$, we have 
+    \begin{equation*}
+        [G_{x,r_1},G_{x,r_2}]\subseteq G_{x,r_1+r_2}.
+    \end{equation*}
+\end{remark}
+
+\begin{definition}[Filtration of Lie algebras]
+    Let $r\in \bR$, we define,
+    \begin{equation*}
+        \mathfrak{t}(F) \defeq\Lie(\bT)(F),\mathfrak{t}_r\defeq \{X\in\mathfrak{Z}(F)\sep \forall \chi\in X^*(\bT),\val(d\chi(X))\geq r\}
+    \end{equation*}
+    where $d\chi=\Lie(\chi)$ is the derivative of $\chi$.
+    \par We further define,
+    \begin{equation*}
+        \g_{\alpha,x,r}\defeq\varpi^{\lceil r-\alpha(x_\BT)\rceil}\Ouv_F\cdot X_\alpha\subseteq\g_\alpha(F),
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \g(F)_{x,r} \defeq \g_{x,r} =\mathfrak{Z}_r\bigoplus_{\alpha\in\Phi(\G,\bT)}\g_{\alpha,x,r}.
+    \end{equation*}
+\end{definition}
+
+\begin{theorem}[Moy-Prasad Isomorphism]
+    For $r_1,r_2\in\bR_{>0}$ for $r_1<r_2\leq 2r_1$, we have 
+    \begin{equation*}
+        G_{x,r_1}/G_{x,r_2}\simeq \g_{x,r_1}/\g_{x,r_2}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}[Sketch of the Proof]
+    We have 
+    \begin{equation*}
+        [G_{x,r_1},G_{x,r_1}]\subseteq G_{x,r_1+r_2}\subseteq G_{x,r_2},
+    \end{equation*}
+    hence the quotient should be abelian.
+\end{proof}
+
+\section{Bruhat-Tits Buildings}
+
+\begin{definition}[non-standard]
+    \label{definition_4_1}
+    The (reduced) Bruaht-Tits building $\mathcal{B}(\G,F)$ of $\G$ over $F$ is such that 
+    \begin{equation*}
+        \{\text{$\BT$-triplets}\}/\sim
+    \end{equation*}
+    where the equivalence relation $\sim$ is given by that for two triplets $x_1,x_2$, 
+    \begin{equation*}
+        \forall r\in\bR_{\geq 0}, G_{x_1r}=G_{x_2,r}.
+    \end{equation*}
+\end{definition}
+
+\begin{notation}
+    Under the setting of Definition \ref{definition_4_1}, it makese sense to write $G_{x,r}$ for each $x\in\mathcal{B}(\G,F)$.
+\end{notation}
+
+\begin{remark}
+    $\mathcal{B}(\G,F)$ admits an action of $G$ such that for $g\in G$, $G_{gx,r} \defeq gG_{x,r}g^{-1}$ for all $x\in\mathcal{B}(\G,F)$ and $r\geq0$.
+    That is there is such $y\in\mathcal{B}(\G,F)$ such that $G_{y,r} = gG_{x,r}g^{-1}$ for any $g,r$ as in the above.
+\end{remark}
+
+\begin{definition}
+    Let $(\pi,V)$ be an irreducible smooth representation of $G$. The depth of $(\pi,V)$ is the smallest non-negative real number $r$ such that $V^{G_{x,r+}}\not=\{0\}$ for some $x\in\mathcal{B}(\G,F)$.
+\end{definition}
 
 \begin{thebibliography}{9}
 \bibitem{Borel} Borel, Linear algebraic groups

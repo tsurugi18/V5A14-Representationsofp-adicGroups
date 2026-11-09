@@ -1,15 +1,17 @@
 # Fdb version 4
-["dvipdf"] 1791971492.68072 "RepresentationofReductiveGroups.dvi" "RepresentationofReductiveGroups.pdf" "RepresentationofReductiveGroups" 1791971492.86885 0
-  "RepresentationofReductiveGroups.dvi" 1791971492.65236 27160 c717229cd8850b270a66ca9c10dd5366 "latex"
+["dvipdf"] 1794240024.21027 "RepresentationofReductiveGroups.dvi" "RepresentationofReductiveGroups.pdf" "RepresentationofReductiveGroups" 1794240024.42745 0
+  "RepresentationofReductiveGroups.dvi" 1794240024.17934 88504 dd814793db6b5410b03baa9ebe5d507c "latex"
   (generated)
   "RepresentationofReductiveGroups.pdf"
   (rewritten before read)
-["latex"] 1791971492.21021 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5A14-RepresentationofReductiveGroups/Note/RepresentationofReductiveGroups.tex" "RepresentationofReductiveGroups.dvi" "RepresentationofReductiveGroups" 1791971492.86774 0
-  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5A14-RepresentationofReductiveGroups/Note/RepresentationofReductiveGroups.tex" 1791971491.99698 14379 5a216bda61a6f2d6fb982187bae55ade ""
+["latex"] 1794240023.6441 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5A14-RepresentationofReductiveGroups/Note/RepresentationofReductiveGroups.tex" "RepresentationofReductiveGroups.dvi" "RepresentationofReductiveGroups" 1794240024.42623 0
+  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5A14-RepresentationofReductiveGroups/Note/RepresentationofReductiveGroups.tex" 1794240023.37714 46732 de0f5a2fe9c6eac9a1905afeff222e8c ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm" 1229303445 688 37338d6ab346c2f1466b29e195316aa4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm" 1229303445 684 3a51bd4fd9600428d5264cf25f04bb9a ""
@@ -30,6 +32,7 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stix/t1-stixgeneral-italic.tfm" 1388795362 11156 e8d76832153748248385d623691129d7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stix/t1-stixgeneral.tfm" 1388795362 11184 42ce9dfc058df87da7094b2e2fab1260 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary10.tfm" 1302307949 848 f478e0761563bbc369eca609a1741348 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary5.tfm" 1302307949 848 e1bc58a31b9ed9c3729ffea165acfaac ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary6.tfm" 1302307949 848 068dd119e13b75777e62821af7d4f2a6 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary7.tfm" 1302307949 848 26631fcb3e4cb6757598b9cda7967b63 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/stmaryrd/stmary8.tfm" 1302307949 848 6125cdd3627e68d3db8013b98e587508 ""
@@ -154,8 +157,8 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/latex.fmt" 1760893821 3345650 f2179b917b551c7214098855962de784 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "RepresentationofReductiveGroups.aux" 1791971492.65182 605 e2dff803a4ccd852209a4d98ea21c88e "latex"
-  "RepresentationofReductiveGroups.tex" 1791971491.99698 14379 5a216bda61a6f2d6fb982187bae55ade ""
+  "RepresentationofReductiveGroups.aux" 1794240024.17881 2235 bd6571bd2aabadcefdc8f0b8031e916c "latex"
+  "RepresentationofReductiveGroups.tex" 1794240023.37714 46732 de0f5a2fe9c6eac9a1905afeff222e8c ""
   (generated)
   "RepresentationofReductiveGroups.aux"
   "RepresentationofReductiveGroups.dvi"

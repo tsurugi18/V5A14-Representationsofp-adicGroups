@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  14 OCT 2026 11:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  9 NOV 2026 17:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -548,111 +548,150 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \c@claim=\count323
 \c@example=\count324
 \c@exercise=\count325
-LaTeX Font Info:    Trying to load font information for T1+stix on input line 165.
+LaTeX Font Info:    Trying to load font information for T1+stix on input line 169.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 ) (./RepresentationofReductiveGroups.aux)
 \openout1 = `RepresentationofReductiveGroups.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 165.
-LaTeX Font Info:    Trying to load font information for LS1+stix on input line 165.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 169.
+LaTeX Font Info:    Trying to load font information for LS1+stix on input line 169.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 165.
-LaTeX Font Info:    Trying to load font information for LS2+stix on input line 165.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 169.
+LaTeX Font Info:    Trying to load font information for LS2+stix on input line 169.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Info: Command `\dddot' is already robust on input line 165.
-LaTeX Info: Command `\ddddot' is already robust on input line 165.
-LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 166.
+LaTeX Font Info:    ... okay on input line 169.
+LaTeX Info: Command `\dddot' is already robust on input line 169.
+LaTeX Info: Command `\ddddot' is already robust on input line 169.
+LaTeX Font Info:    Trying to load font information for LS1+stixscr on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 166.
+LaTeX Font Info:    Trying to load font information for LS2+stixex on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 166.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 166.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 166.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 166.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 166.
+LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 166.
+LaTeX Font Info:    Trying to load font information for LS1+stixbb on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 166.
+LaTeX Font Info:    Trying to load font information for LS2+stixcal on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 166.
+LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 166.
+LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 170.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 )
 
 LaTeX Font Warning: Font shape `U/stmry/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 168.
+(Font)              size <7> substituted on input line 172.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 168.
+(Font)              size <7> substituted on input line 172.
 
 
 
 [1
 
 ]
-Overfull \hbox (49.33353pt too wide) in paragraph at lines 251--257
+Overfull \hbox (49.33353pt too wide) in paragraph at lines 266--272
  [] 
  []
 
 
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+[3]
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+Overfull \hbox (2.06311pt too wide) in paragraph at lines 730--731
+\T1/stix/m/it/10 compact-induction is a sub-rep-re-sen-ta-tion $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 c \LS1/stix/m/n/10 * [][].\LS1/stix/m/it/10 ^^[\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; c \LS1/stix/m/n/10 * [][].\LS1/stix/m/it/10 W\LS1/stix/m/n/10 //$ \T1/stix/m/it/10 of $\LS1/stix/m/n/10 .[][].\LS1/stix/m/it/10 ^^[\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; [][]\LS1/stix/m/n/10 /$
+ []
+
+
+
+[9]
+Overfull \hbox (12.28465pt too wide) in paragraph at lines 753--754
+[]\T1/stix/m/it/10 Let $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 ^^[; V[]\LS1/stix/m/n/10 /$ \T1/stix/m/it/10 to be a smooth rep-re-sen-ta-tion of $\LS1/stix/m/it/10 M \LS1/stix/m/n/10 = \LS1/stixbb/m/n/10 M\LS1/stix/m/n/10 .\LS1/stix/m/it/10 F\LS1/stix/m/n/10 /$\T1/stix/m/it/10 . Then $[][]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 ^^[\LS1/stix/m/n/10 / []= [][] \LS1/stix/m/it/10 ^^[ \LS1/stixscr/m/n/10 ^^O
+ []
+
+
+
+[10]
+
+[11]
+
+[12]
+
+[13]
+Overfull \hbox (17.89328pt too wide) detected at line 1019
+[]
+ []
+
+
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
 []\T1/stix/m/n/10 Debacker, Ste-fan, Lec-ture notes https://websites.umich.edu/ smd-
  []
 
 
 
-[3]
+[15]
 
-[4] (./RepresentationofReductiveGroups.aux)
+[16] (./RepresentationofReductiveGroups.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -660,16 +699,16 @@ L3 programming layer <2025-01-18>
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
+(Font)              up to 1.25pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 18747 strings out of 473191
- 371152 string characters out of 5715825
- 819820 words of memory out of 5000000
- 41674 multiletter control sequences out of 15000+600000
- 616944 words of font info for 124 fonts, out of 8000000 for 9000
+ 18985 strings out of 473191
+ 375976 string characters out of 5715825
+ 823504 words of memory out of 5000000
+ 41909 multiletter control sequences out of 15000+600000
+ 664661 words of font info for 216 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,15n,121p,595b,707s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,18n,121p,595b,1030s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on RepresentationofReductiveGroups.dvi (4 pages, 27160 bytes).
+Output written on RepresentationofReductiveGroups.dvi (16 pages, 88504 bytes).
